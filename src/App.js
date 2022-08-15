@@ -1,5 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Movies from './pages/Movies';
+import MovieDetail from './pages/MovieDetail';
 
 //3개 페이지 홈,무비,영화상세페이지
 //2. 홈페이지에서 배너를 볼 수 있다.
@@ -17,7 +21,11 @@ import './App.css';
 function App() {
   return (
     <div>
-
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/movies" element={<Movies/>}/>
+        <Route path="/movies/:id" element={<MovieDetail/>}/>
+      </Routes>
     </div>
   );
 }
