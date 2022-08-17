@@ -4,16 +4,34 @@ import api from "../api"
 const API_KEY = process.env.REACT_APP_API_KEY
 function getMovies(){
   return async(dispatch)=>{
-    const popularMovieApi = await api.get(`/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
- 
+    try{
+      dispatch({type : "GET_MOVIES_REQUEST"})
+      const popularMovieApi = api.get(`/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
+      const topRatedApi = api.get(`/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`)
+      const upComingApi = api.get(`/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`)
+  
+      let [popularMovies,topRatedMovies,upcomingMovies] = await Promise.all([
+        popularMovieApi,topRatedApi,upComingApi
+      ]);
+      dispatch({
+        type : "GET_MOVIES_SUCCESS",
+        payload : {
+          popularMovies : popularMovies.data,
+          topRatedMovies: topRatedMovies.data, 
+          upcomingMovies: upcomingMovies.data
+        },
+      })
+    }catch(error){
+      //에러 핸들링
+      dispatch({type : "GET_MOVIES_FAILURE"})
+    }
 
-
-    // let url= `
-    // https://api.themoviedb.org/3`
-    // let response = await fetch(url)
-    // let data = await response.json()
-
-    // let url2 = `https://api.themoviedb.org/3/movie/top_rated?api_key=<<api_key>>&language=en-US&page=1`
+    //console.log("promise all data", data)
+    console.log("popularMovies", popularMovies)
+    console.log("topRatedMovies", topRatedMovies)
+    console.log("upcomingMovies", upcomingMovies)
+    
+  
   }
 }
 
@@ -23,3 +41,5 @@ export const movieAction = {
 
 //리덕스미들웨어
 // 함수를 리턴
+
+//3개의 데이터를 병렬로 한꺼번 -> Promise.all() 함수사용
