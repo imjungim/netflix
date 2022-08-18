@@ -27,9 +27,9 @@ function getMovies(){
     }
 
     //console.log("promise all data", data)
-    console.log("popularMovies", popularMovies)
-    console.log("topRatedMovies", topRatedMovies)
-    console.log("upcomingMovies", upcomingMovies)
+    // console.log("popularMovies", popularMovies)
+    // console.log("topRatedMovies", topRatedMovies)
+    // console.log("upcomingMovies", upcomingMovies)
     
   
   }
