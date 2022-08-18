@@ -1,8 +1,12 @@
 import React from 'react'
+import MovieDetailBanner from '../components/MovieDetailBanner'
 
 const MovieDetail = () => {
   return (
-    <div>MovieDetail</div>
+    <div>
+      <MovieDetailBanner/>
+
+    </div>
   )
 }
 

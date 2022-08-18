@@ -9,10 +9,17 @@ body{
   margin-right: 20px;
 }
 
+.home h1 {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+/* Banner */
 .banner {
   display: flex;
   align-items: center;
   height: 600px;
+  margin-bottom: 20px;
 }
 
 .banner::before {
@@ -30,3 +37,28 @@ body{
   z-index: 1;
 }
 
+/* MovieCard */
+.card{
+  margin: 20px auto;
+}
+.overlay{
+  margin: 10px;
+  opacity: 0;
+
+}
+.card:hover{
+  z-index: 3;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.card:hover .overlay{
+  opacity: 1;
+  width: 200px;
+}
+
+/* MovieDetailBanner */
+
+.MovieDetailBanner{
+  background-size: cover;
+  height: 400px;
+}
