@@ -40,3 +40,4 @@ export default Home
 
 //영화데이터가 도착이전일경우(true) 로딩스피너
 //loading 이 true일때
+

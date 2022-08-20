@@ -10,8 +10,15 @@ body{
 }
 
 .home h1 {
-  margin-left: 10px;
+  margin-left: 80px;
   margin-bottom: 10px;
+}
+
+/* movieSlide */
+
+.movieSlide{
+  width: 95%;
+  margin: 0 auto;
 }
 
 /* Banner */
@@ -33,7 +40,7 @@ body{
 
 .banner-info{
   width: 40%;
-  margin-left: 30px;
+  margin-left: 70px;
   z-index: 1;
 }
 
@@ -61,4 +68,62 @@ body{
 .MovieDetailBanner{
   background-size: cover;
   height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 }
+.movies-box{
+  display: inline-block;
+}
+.movies-box h1{
+  font-size: 70px;
+  margin-bottom: 20px;
+}
+.movies-box ul{
+  height: 60px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+
+  list-style: none;
+  border: 1px solid black;
+  background-color: white;
+  color: gray;
+  margin: 0 auto;
+}
+.movies-box ul li {
+  margin: 0 auto;
+}
+
+/* MovieDetail */
+
+.MovieDetail img{
+  width: 500px;
+}
+
+.MovieDetail h1{
+  font-size: 80px;
+}
+
+
+.detail_genre {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detail_genre li{
+  background-color: crimson;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 20px;
+  margin-bottom: 5px;
+  border-radius: 15px;
+  color: white;
+  font-size: 15px;
+}
+

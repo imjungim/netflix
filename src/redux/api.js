@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+//api 기본셋팅
 const api = axios.create({
   baseURL : "https://api.themoviedb.org/3",
   headers : {"Content-type" : "application/json"} //데이터타입
