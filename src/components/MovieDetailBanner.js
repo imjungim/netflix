@@ -16,7 +16,7 @@ const MovieDetailBanner = ({selectedMovie}) => {
       <div className="movies-box">
         <h1>NETFLIX</h1>
         <ul>
-          <li>{selectedMovie.title}</li>
+          <li>zz</li>
         </ul>
       </div>
     </div>

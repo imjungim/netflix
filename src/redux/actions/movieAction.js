@@ -46,13 +46,34 @@ function getMovies() {
 
 function getMovieDetail(id) {
   return async (dispatch) => {
-    const getMovieDetailApi = await api.get(`/movie/${id}?api_key=${API_KEY}&language=en-US`);
-    //const getMovieReview = await api.get(`/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
-    console.log("getMovie!!!!!", getMovieDetailApi);
-    dispatch({
-      type: "GET_MOVIES_DETAIL",
-      payload: { selectedMovie : getMovieDetailApi.data },
-    });
+    try{
+      const getMovieDetailApi = await api.get(`/movie/${id}?api_key=${API_KEY}&language=en-US`);
+      const getMovieReviewApi = await api.get(`/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`)
+      const getMovieRecommendationApi = await api.get(`/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`)
+      const getMovieVideoApi = await api.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`)
+      
+      let [selectedMovie, getMovieReview, getMovieRecommendation, getMovieVideo] = await Promise.all([
+        getMovieDetailApi,
+        getMovieReviewApi,
+        getMovieRecommendationApi,
+        getMovieVideoApi
+  
+      ])
+      
+     console.log("getMovie!!!!!", getMovieVideoApi.data);
+      dispatch({
+        type: "GET_MOVIES_DETAIL",
+        payload: { 
+          selectedMovie : getMovieDetailApi.data,
+          getMovieDetail : getMovieReviewApi.data,
+          getMovieRecommendation : getMovieRecommendationApi.data,
+          getMovieVideo : getMovieVideoApi.data,
+        
+        },
+      });
+    }catch(error){
+      dispatch({ type: "GET_MOVIES_FAILURE" });
+    }
   };
 }
 
