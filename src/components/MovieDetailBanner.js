@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 
 const MovieDetailBanner = ({selectedMovie}) => {
- //console.log("mm",selectedMovie)
+ // console.log("title",selectedMovie)
   return (
     <div
       className="MovieDetailBanner"
@@ -15,9 +15,10 @@ const MovieDetailBanner = ({selectedMovie}) => {
     >
       <div className="movies-box">
         <h1>NETFLIX</h1>
-        <ul>
-          <li>zz</li>
-        </ul>
+        <div className="movies-box-title">
+          <h4>{selectedMovie.title}</h4>
+          
+        </div>
       </div>
     </div>
   );

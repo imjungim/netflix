@@ -17,7 +17,9 @@ const Home = () => {
 //loading -> false 면 데이터를 보여준다 : 데이터 도착후 또는 에러가 났을때
   if(loading){
     return ( 
-    <ClipLoader color="#ffff" loading={loading} size={150} />
+    <div className="loading">
+    <ClipLoader color="#ffff" loading={loading} size={150}  />
+    </div>
     );
   }
   return (
