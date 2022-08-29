@@ -1,6 +1,9 @@
 import React from 'react'
-import {Button, Container, Form, Nav, Navbar, NavDropdown,FormControl } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {Button, Container, Form, Nav, Navbar, NavDropdown,FormControl } from 'react-bootstrap';
+
 
 const Navigation = () => {
   return (
@@ -24,7 +27,9 @@ const Navigation = () => {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-danger">Search</Button>
+            <Button variant="outline-danger">
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>

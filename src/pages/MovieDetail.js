@@ -29,14 +29,15 @@ const MovieDetail = () => {
     getMovieVideo,
     loading,
   } = useSelector((state) => state.movie);
+
   console.log("test1", selectedMovie);
   console.log("test2", getMovieReview);
   console.log("test3", getMovieRecommendation);
-  console.log("rtest4", getMovieVideo);
+  console.log("test4", getMovieVideo);
 
   useEffect(() => {
     dispatch(movieAction.getMovieDetail(id));
-  }, []);
+  }, [id]);
 
   const [reviewActive, setReviewActive] = useState(true);
   const [show, setShow] = useState(false);
@@ -57,7 +58,7 @@ const MovieDetail = () => {
           <Row>
             <Col xl={6} lg={4}>
               <div className="MovieDetail-img">
-              <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${selectedMovie.poster_path}`}/>
+              <img src={`https://image.tmdb.org/t/p/original//${selectedMovie.poster_path}`}/>
 
               </div>
             </Col>
@@ -67,14 +68,13 @@ const MovieDetail = () => {
                   <ul className="detail_genre">
                     {selectedMovie.genres.map((item) => {
                     return <li>{item.name}</li>;
-                  })}
-            
+                  })} 
+          
                   </ul>
                 </div>
                 <div className="detail-title">
-                  <h1>{selectedMovie.title}</h1>
+                <h1>{selectedMovie.title}</h1>
                   <h3>{selectedMovie.original_title}</h3>
-
                 </div>
                 <div className="movie-count">
                   <ul>
@@ -85,38 +85,35 @@ const MovieDetail = () => {
                         className="star"
                       />
                       <span>{selectedMovie.vote_average}</span>
-                      {/* <span>test</span> */}
+                     
                     </li>
                     <li>
                       <FontAwesomeIcon icon={faUsers} className="users" />
-                      <span>{selectedMovie.popularity}</span>
-                      
+                     <span>{selectedMovie.popularity}</span>
                     </li>
                     <li>
                       <span className="movie-adultInfo">
-                        {selectedMovie.adult ? "청불" : "Under 18"}
-                      
+                       {selectedMovie.adult ? "청불" : "Under 18"}
                       </span>
                     </li>
                   </ul>
                 </div>
                 <div className="movie-overview">
-                  <p>{selectedMovie.overview}</p>
-  
+                <p>{selectedMovie.overview}</p>
                 </div>
                 <div className="movie-info">
                   <ul>
                     <li>
                       <span>Budget</span>
-                      ${selectedMovie.budget}
+                       ${selectedMovie.budget}
                     </li>
                     <li>
                       <span>Revenue</span>
-                      ${selectedMovie.revenue}
+                       ${selectedMovie.revenue}
                     </li>
                     <li>
                       <span>Release Day</span>
-                      {selectedMovie.release_date}
+                 {selectedMovie.release_date} 
                     </li>
                     <li>
                       <span>Time</span>
@@ -128,7 +125,7 @@ const MovieDetail = () => {
                   <FontAwesomeIcon icon={faVideo} />
                   <button onClick={() => setShow(true)}>Watch Trailer</button>
                   {/* Watch Trailer Modal */}
-                  <Modal
+                    <Modal
                     show={show}
                     fullscreen={fullscreen}
                     onHide={() => setShow(false)}
@@ -153,7 +150,7 @@ const MovieDetail = () => {
                         
                       />
                     </Modal.Body>
-                  </Modal>
+                  </Modal> 
                 </div>
               </div>
             </Col>
@@ -166,7 +163,7 @@ const MovieDetail = () => {
                   <ul className="review-button">
                     <li>
                       <button onClick={() => setReviewActive(true)}>
-                        REVIEW ({getMovieReview.results.length})
+                        REVIEW ({getMovieReview.results.length}) 
                       </button>
                     </li>
                     <li>
@@ -185,9 +182,9 @@ const MovieDetail = () => {
                       <Review review={getMovieReview} />
                     ) : (
                       //<RelatedMovies/>
-                      getMovieRecommendation.results.map((item) => (
-                         <MovieCard item={item} />
-                      ))
+                       getMovieRecommendation.results.map((item) => (
+                      <MovieCard item={item} />
+                       ))
                     )}
                   </div>
                 </div>

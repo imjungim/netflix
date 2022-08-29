@@ -2,12 +2,12 @@ import api from "../api";
 
 //api키값 .env 환경변수 설정
 const API_KEY = process.env.REACT_APP_API_KEY;
-function getMovies() {
+function getMovies(page) {
   return async (dispatch) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
       const popularMovieApi = api.get(
-        `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+        `/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
       );
       const topRatedApi = api.get(
         `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
@@ -20,14 +20,17 @@ function getMovies() {
         `genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
 
-      let [popularMovies, topRatedMovies, upcomingMovies, genreList] =
+      // const searchApi = api.get(`/search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false`)
+
+      let [popularMovies, topRatedMovies, upcomingMovies, genreList, searchMovies] =
         await Promise.all([
           popularMovieApi,
           topRatedApi,
           upComingApi,
           genreApi,
+
         ]);
-      console.log("genreList!", genreList);
+      console.log("searchMovies!", searchMovies);
       dispatch({
         type: "GET_MOVIES_SUCCESS",
         payload: {
@@ -48,16 +51,16 @@ function getMovieDetail(id) {
   return async (dispatch) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
-      const getMovieDetailApi = await api.get(
+      const getMovieDetailApi = api.get(
         `/movie/${id}?api_key=${API_KEY}&language=en-US`
       );
-      const getMovieReviewApi = await api.get(
+      const getMovieReviewApi = api.get(
         `/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
       );
-      const getMovieRecommendationApi = await api.get(
+      const getMovieRecommendationApi = api.get(
         `/movie/${id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`
       );
-      const getMovieVideoApi = await api.get(
+      const getMovieVideoApi = api.get(
         `/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
       );
 
@@ -77,10 +80,10 @@ function getMovieDetail(id) {
       dispatch({
         type: "GET_MOVIES_DETAIL",
         payload: {
-          selectedMovie: getMovieDetailApi.data,
-          getMovieReview: getMovieReviewApi.data,
-          getMovieRecommendation: getMovieRecommendationApi.data,
-          getMovieVideo: getMovieVideoApi.data,
+          selectedMovie: selectedMovie.data,
+          getMovieReview: getMovieReview.data,
+          getMovieRecommendation: getMovieRecommendation.data,
+          getMovieVideo: getMovieVideo.data,
         },
       });
     } catch (error) {

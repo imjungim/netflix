@@ -5,7 +5,7 @@ const Review = ({ review }) => {
   if (review.results.length === 0) {
     return (
       <div className="Review">
-        <h3 style={{textAlign : 'center'}}>'There's no review'</h3>
+        <h3 style={{ textAlign: "center" }}>'There's no review'</h3>
       </div>
     );
   }
