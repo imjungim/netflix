@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, } from "react-redux";
 import MultiRangeSlider from "multi-range-slider-react";
+import { movieAction } from "../redux/actions/movieAction";
 
 const FilterYear = ({ min, max}) => {
+  const dispatch = useDispatch();
+
   const [minValue, set_minValue] = useState(min);
   const [maxValue, set_maxValue] = useState(max);
   const [close, setClose] = useState(false)
@@ -10,6 +14,10 @@ const FilterYear = ({ min, max}) => {
     set_minValue(e.minValue);
     set_maxValue(e.maxValue);
   };
+
+  useEffect(()=>{
+    dispatch(movieAction.getFiltering(maxValue, minValue))
+  },[maxValue, minValue])
 
   return (
     <div >

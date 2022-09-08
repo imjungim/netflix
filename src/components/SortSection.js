@@ -1,52 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { movieAction } from "../redux/actions/movieAction";
+
 
 const SortSection = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [close, setClose] = useState(false);
+  const [filterTitle, setFilterTitle] = useState('popularity.desc');
+  const { sortMovies,popularMovies } = useSelector(
+    (state) => state.movie
+  );
+    
+
+    useEffect(()=>{
+      dispatch(movieAction.getMovies(filterTitle))
+    },[filterTitle]);
+
+    //console.log("filterTitle나와라",filterTitle)
+
+  //sort select
+  const handleChange = (eventKey) => {
+    setFilterTitle(eventKey);
+    navigate('/movies')
+  }
 
   return (
-    <div>
-      <div className={close ? "sort-section-closed" : "sort-section"}>
-        <div className="sort-section_1">
-          <h5>Sort</h5>
-          <span className="arrow-right">
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              onClick={() => setClose(!close)}
-            />
-          </span>
-        </div>
-        <div className="sort-dropdown">
-          <NavDropdown
-            id="nav-dropdown-dark-example"
-            title="Sort Results By"
-            variant="secondary"
-          >
-            <NavDropdown.Item href="#action/3.1">None</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Popularity(Desc)
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">
-              Popularity(Asc)
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">
-              Release Day(Desc)
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">
-              Release Day(Asc)
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">Vote(Desc)</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">Vote(Asc)</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">
-              Revenue(Desc)
-            </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.4">Revenue(Asc)</NavDropdown.Item>
-          </NavDropdown>
-        </div>
-      </div>
-    </div>
+   <div></div>
   );
 };
 
