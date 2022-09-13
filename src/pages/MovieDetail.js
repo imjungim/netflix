@@ -20,10 +20,11 @@ import MovieSlide from "../components/MovieSlide";
 //useSelect movie데이터 가져와
 //
 const MovieDetail = () => {
-  const dispatch = useDispatch();
   const { id } = useParams();
+  const dispatch = useDispatch();
+
   const {
-    selectedMovie,
+    getMovieDetail,
     getMovieReview,
     getMovieRecommendation,
     getMovieVideo,
@@ -32,44 +33,44 @@ const MovieDetail = () => {
 
   useEffect(() => {
     dispatch(movieAction.getMovieDetail(id));
-  }, [id]);
+  }, []);
 
   const [reviewActive, setReviewActive] = useState(true);
   const [show, setShow] = useState(false);
   const [fullscreen, setFullscreen] = useState(true);
 
-  if(loading){
+  if (loading) {
     return (
-    <div className="loading">
-    <ClipLoader color="#ffff" loading={loading} size={150}  />
-    </div>
+      <div className="loading">
+        <ClipLoader color="#ffff" loading={loading} size={150} />
+      </div>
     );
   }
   return (
     <div className="MovieDetail">
-      <MovieDetailBanner selectedMovie={selectedMovie} />
+      <MovieDetailBanner getMovieDetail={getMovieDetail} />
       <section className="detail-area">
         <Container>
           <Row>
-            <Col xl={6} lg={4}>
+            <Col sm={6} xl={6} lg={4}>
               <div className="MovieDetail-img">
-              <img src={`https://image.tmdb.org/t/p/original//${selectedMovie.poster_path}`}/>
-
+                <img
+                  src={`https://image.tmdb.org/t/p/original//${getMovieDetail.poster_path}`}
+                />
               </div>
             </Col>
-            <Col xl={6} lg={8}>
+            <Col sm={6} xl={6} lg={8}>
               <div className="MovieDetail-data">
                 <div className="genrebox">
                   <ul className="detail_genre">
-                    {selectedMovie.genres.map((item) => {
-                    return <li>{item.name}</li>;
-                  })} 
-          
+                    {getMovieDetail.genres.map((item) => {
+                      return <li>{item.name}</li>;
+                    })}
                   </ul>
                 </div>
                 <div className="detail-title">
-                <h1>{selectedMovie.title}</h1>
-                  <h3>{selectedMovie.original_title}</h3>
+                  <h1>{getMovieDetail.title}</h1>
+                  <h3>{getMovieDetail.original_title}</h3>
                 </div>
                 <div className="movie-count">
                   <ul>
@@ -79,40 +80,39 @@ const MovieDetail = () => {
                         style={{ color: "yellow" }}
                         className="star"
                       />
-                      <span>{selectedMovie.vote_average}</span>
-                     
+                      <span>{getMovieDetail.vote_average}</span>
                     </li>
                     <li>
                       <FontAwesomeIcon icon={faUsers} className="users" />
-                     <span>{selectedMovie.popularity}</span>
+                      <span>{getMovieDetail.popularity}</span>
                     </li>
                     <li>
                       <span className="movie-adultInfo">
-                       {selectedMovie.adult ? "청불" : "Under 18"}
+                        {getMovieDetail.adult ? "청불" : "Under 18"}
                       </span>
                     </li>
                   </ul>
                 </div>
                 <div className="movie-overview">
-                <p>{selectedMovie.overview}</p>
+                  <p>{getMovieDetail.overview}</p>
                 </div>
                 <div className="movie-info">
                   <ul>
                     <li>
                       <span>Budget</span>
-                       ${selectedMovie.budget}
+                      ${getMovieDetail.budget}
                     </li>
                     <li>
                       <span>Revenue</span>
-                       ${selectedMovie.revenue}
+                      ${getMovieDetail.revenue}
                     </li>
                     <li>
                       <span>Release Day</span>
-                 {selectedMovie.release_date} 
+                      {getMovieDetail.release_date}
                     </li>
                     <li>
                       <span>Time</span>
-                      {selectedMovie.runtime}
+                      {getMovieDetail.runtime}
                     </li>
                   </ul>
                 </div>
@@ -120,7 +120,7 @@ const MovieDetail = () => {
                   <FontAwesomeIcon icon={faVideo} />
                   <button onClick={() => setShow(true)}>Watch Trailer</button>
                   {/* Watch Trailer Modal */}
-                    <Modal
+                  <Modal
                     show={show}
                     fullscreen={fullscreen}
                     onHide={() => setShow(false)}
@@ -138,50 +138,49 @@ const MovieDetail = () => {
                           height: "600px",
                           playerVars: {
                             autoplay: 0, //자동재생 O
-                            rel: 0, //관련 동영상 표시하지 않음 
+                            rel: 0, //관련 동영상 표시하지 않음
                             modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
                           },
                         }}
-                        
                       />
                     </Modal.Body>
-                  </Modal> 
+                  </Modal>
                 </div>
               </div>
             </Col>
           </Row>
+
           {/* review & related movie */}
           <section className="review-related-area">
             <Row>
-              <Col xl={12} lg={12}>
-                <div className="movie-review">
-                  <ul className="review-button">
-                    <li>
-                      <button onClick={() => setReviewActive(true)}>
-                        REVIEW ({getMovieReview.results.length}) 
-                      </button>
-                    </li>
-                    <li>
-                      <button onClick={() => setReviewActive(false)}>
-                        RELATED MOVIES
-                        ({getMovieRecommendation.results.length})
-                      </button>
-                    </li>
-                  </ul>
-                  <div
-                    className={
-                      reviewActive ? "review-content" : "related-content"
-                    }
-                  >
-                    {reviewActive ? (
-                      <Review review={getMovieReview} />
-                    ) : (
-                      //<RelatedMovies/>
-                      getMovieRecommendation.results.map((item) => (
+              <Col sm={12}xl={12} lg={12}>
+                <ul className="review-button">
+                  <li>
+                    <button onClick={() => setReviewActive(true)}>
+                      REVIEW
+                      ({getMovieReview.results.length})
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={() => setReviewActive(false)}>
+                      RELATED MOVIES
+                      ({getMovieRecommendation.results.length})
+                    </button>
+                  </li>
+                </ul>
+                <div
+                  className={
+                    reviewActive ? "review-content" : "related-content"
+                  }
+                >
+                  {reviewActive ? (
+                    <Review review={getMovieReview} />
+                  ) : (
+                 //   <RelatedMovies />
+                    getMovieRecommendation.results.map((item) => (
                       <MovieCard item={item} />
-                      ))
-                    )}
-                  </div>
+                    ))
+                  )}
                 </div>
               </Col>
             </Row>

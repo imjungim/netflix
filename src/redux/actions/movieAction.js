@@ -25,11 +25,11 @@ function getMovies(page, searchKeyword, filterTitle) {
       const searchApi = api.get(
         `/search/movie?api_key=${API_KEY}&language=en-US&query=${searchKeyword}&page=${page}&include_adult=false`
       );
-      console.log("Action keyword",searchKeyword)
+     
       const sortMovieApi = api.get(
         `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${filterTitle}&include_adult=true&include_video=false&page=${page}`
       );
-      console.log("filterTitle??", filterTitle);
+     
      
       let [
         popularMovies,
@@ -46,7 +46,7 @@ function getMovies(page, searchKeyword, filterTitle) {
         searchApi,
         sortMovieApi,
       ]);
-      //console.log("popularMovies!!", popularMovies.data);
+   
 
       dispatch({
         type: "GET_MOVIES_SUCCESS",
@@ -81,10 +81,10 @@ function getMovieDetail(id) {
       );
       const getMovieVideoApi = api.get(
         `/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
-      );
+      );console.log("ID???",id)
 
       let [
-        selectedMovie,
+        getMovieDetail,
         getMovieReview,
         getMovieRecommendation,
         getMovieVideo,
@@ -95,11 +95,10 @@ function getMovieDetail(id) {
         getMovieVideoApi,
       ]);
 
-      console.log("getMovie!!!!!", getMovieVideoApi);
       dispatch({
         type: "GET_MOVIES_DETAIL",
         payload: {
-          selectedMovie: selectedMovie.data,
+          getMovieDetail: getMovieDetail.data,
           getMovieReview: getMovieReview.data,
           getMovieRecommendation: getMovieRecommendation.data,
           getMovieVideo: getMovieVideo.data,
@@ -114,7 +113,7 @@ function getMovieDetail(id) {
 function getFiltering(maxValue, minValue, genreTitle) {
   return async (dispatch) => {
     try {
-       console.log("ddd", genreTitle);
+      
       dispatch({
         type: "GET_FILTERING",
         payload: { maxValue, minValue, genreTitle },

@@ -13,12 +13,17 @@ const MovieList = ({
   genreList,
   genreTitle,
   searchKeyword,
-
+  page,
+  setPage
 }) => {
 
-  let movies = [];
-console.log("sort2",sortMovies)
-console.log("search임",searchMovies)
+let movies = [];
+
+  //pagination
+  const handlePageChange = (page) => {
+    setPage(page);
+    window.scrollTo(0,0)
+  };
 
 // 년도
   const yearFilter = sortMovies.results
@@ -28,13 +33,12 @@ console.log("search임",searchMovies)
         minValue <= moment(element.release_date).format("YYYY") &&
         maxValue >= moment(element.release_date).format("YYYY")
     );
-    console.log("yearFilter", yearFilter);
+    
   //장르
   const genreFilter = genreList?.find((item) => item.name === genreTitle)?.id;
   const genres = sortMovies.results
     .slice()
     .filter((element) => element.genre_ids.includes(genreFilter));
-  console.log("gggenres", genres);
 
   //연도 && 장르
   const filterAll = yearFilter
@@ -52,15 +56,13 @@ if(searchMovies.results[0]?.title == "UNdefined" ||
 (sortMovies.results !== null && searchKeyword == null)
 ){
   movies=sortMovies.results;
-  console.log("메인",movies)
-}//년도
+}
+//년도
 if(minValue >=1990 && maxValue <= 2022){
   movies = yearFilter
-  console.log("년도",movies)
 }
 if(genreFilter){
   movies=genres
-  console.log("장르",movies)
 }
   return (
     <div>
@@ -73,13 +75,18 @@ if(genreFilter){
           );
         })}
       </Row>
- 
+      <div className="pagination-area">
+          <Pagination
+            activePage={page}
+            itemsCountPerPage={10}
+            totalItemsCount={1000}
+            pageRangeDisplayed={5}
+            onChange={handlePageChange}
+          />
+        </div>
     </div>
   );
 };
 
 export default MovieList;
 
-{
-  /* <SingleCard item={item} searchMovies={searchMovies} key={item.id}/> */
-}

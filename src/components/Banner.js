@@ -1,15 +1,15 @@
 import React from "react";
 
 const Banner = ({ movie }) => {
-  console.log("movie?", movie);
+
   return (
     <div
       className="banner"
       style={{
         backgroundImage:
           "url(" +
-          `https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/${movie.poster_path}` +
-          ")",backgroundPosition : 'center center'
+          `https://image.tmdb.org/t/p/original//${movie.backdrop_path}` +
+          ")", backgroundPosition : 'center'
       }}
     >
       <div className="banner-info">

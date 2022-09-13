@@ -11,7 +11,7 @@ const SingleCard = ({ item }) => {
   const navigate = useNavigate();
   const { genreList } = useSelector((state) => state.movie);
   const showDetail = () => {
-    navigate(`/movies/${item.id}}`);
+    navigate(`/movies/${item.id}`);
   };
 
   return (

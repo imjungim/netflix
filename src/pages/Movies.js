@@ -12,7 +12,7 @@ import SortSection from "../components/SortSection";
 import ClipLoader from "react-spinners/ClipLoader";
 import { movieAction } from "../redux/actions/movieAction";
 import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
-import Pagination from "react-js-pagination";
+
 
 
 const Movies = () => {
@@ -39,10 +39,6 @@ const Movies = () => {
     dispatch(movieAction.getMovies(page, searchKeyword, filterTitle));
   }, [page, filterTitle,searchKeyword]);
 
-  //pagination
-  const handlePageChange = (page) => {
-    setPage(page);
-  };
 
   //sort select
   const handleChange = (eventKey) => {
@@ -122,18 +118,11 @@ const Movies = () => {
               searchKeyword={searchKeyword}
               filterTitle={filterTitle}
               page={page}
+              setPage={setPage}
             />
           </Col>
         </Row>
-        <div className="pagination-area">
-          <Pagination
-            activePage={page}
-            itemsCountPerPage={10}
-            totalItemsCount={1000}
-            pageRangeDisplayed={5}
-            onChange={handlePageChange}
-          />
-        </div>
+
       </Container>
     </div>
   );

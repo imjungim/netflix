@@ -42,10 +42,13 @@ body {
 
 /* Banner */
 .banner {
+  width: 100%;
   height: 800px;
   display: flex;
   align-items: center;
   margin-bottom: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .banner::before {
@@ -58,12 +61,12 @@ body {
 }
 
 .banner-info {
-  width: 60%;
+  width: 80%;
   margin-left: 70px;
   z-index: 1;
 }
 .banner-info h1 {
-  margin-top: 200px;
+  margin-top: 300px;
   margin-left: 70px;
   font-weight: 700;
 }
@@ -76,11 +79,12 @@ body {
 .card {
   width: 280px;
   margin: 20px auto;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .badge {
   margin-right: 5px;
-
 }
 
 .overlay {
@@ -103,7 +107,7 @@ body {
   margin-right: 10px;
 }
 
-.movie-card-info{
+.movie-card-info {
   display: flex;
 }
 
@@ -123,8 +127,6 @@ body {
   font-size: 0.8rem;
   font-weight: 700;
 }
-
-
 
 /* MovieDetailBanner */
 
@@ -170,16 +172,20 @@ body {
 /* MovieDetail */
 
 .detail-area {
-  width: 1240px;
+  width: 90%;
   margin: 0 auto;
 }
-
+.MovieDetail-img{
+  margin-right: 30px;
+}
 .MovieDetail-img img {
-  width: 550px;
+  width: 100%;
+  
 }
 
 .detail-title h1 {
   font-size: 60px;
+  margin-bottom: 20px;
 }
 .detail-title h3 {
   margin-bottom: 20px;
@@ -214,6 +220,7 @@ body {
 }
 
 .movie-overview {
+  display: block;
   border-bottom: 1.5px solid white;
   padding-bottom: 20px;
   margin-top: 30px;
@@ -255,6 +262,7 @@ body {
   padding: 5px;
   margin-right: 10px;
   text-align: center;
+  font-weight: 700;
 }
 
 .movie-info li {
@@ -278,6 +286,8 @@ body {
 .watch-button button:hover {
   color: white;
 }
+
+
 
 /*review & related movie  */
 
@@ -380,10 +390,10 @@ body {
   font-weight: 400;
 }
 
-.dropdown-item .active{
+.dropdown-item .active {
   background-color: #e50914;
 }
-.dropdown-item:focus{
+.dropdown-item:focus {
   background-color: #e50914 !important;
 }
 
@@ -406,7 +416,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 
 .Filter-area {
   display: flex;
@@ -474,24 +483,22 @@ body {
   display: inline-block;
   margin-top: 20px;
   margin-right: 10px;
- 
 }
 
-.singleCard-content{
+.singleCard-content {
   width: 80%;
   height: 100%;
   position: relative;
   padding-left: 30px;
   padding-top: 30px;
-  background: linear-gradient(90deg, #0d0d0c 30%, transparent); 
-  
+  background: linear-gradient(90deg, #0d0d0c 30%, transparent);
 }
 
-.singleCard-title{
+.singleCard-title {
   display: flex;
 }
 
-.release-date{
+.release-date {
   color: #9ac7fa;
   font-weight: 400;
   font-size: 13px;
@@ -501,13 +508,13 @@ body {
   margin-bottom: 10px;
 }
 
-.singleCard-title img{
+.singleCard-title img {
   width: 50px;
   margin-bottom: 10px;
   margin-right: 20px;
 }
 
-.singleCard-overview p{
+.singleCard-overview p {
   margin-top: 10px;
   font-size: 12px;
 }
@@ -525,11 +532,11 @@ body {
   margin-top: 30px;
   margin-right: 20px;
   margin-bottom: 20px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
 }
 
-.singleCard-back{
+.singleCard-back {
   width: 280px;
   border-radius: 10px;
 
@@ -538,16 +545,16 @@ body {
   background-repeat: no-repeat;
 }
 
-.singleCard:hover{
+.singleCard:hover {
   cursor: pointer;
 }
-.singleCard-back:hover{
+.singleCard-back:hover {
   transform: translateY(-20px);
 }
 
 /* pagination */
 
-.pagination-area{
+.pagination-area {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -556,23 +563,73 @@ body {
 
 .pagination li {
   align-items: center;
-  
+
   padding-top: 3px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 3px;
   margin: 10px;
 
-  font-family:sans-serif;
+  font-family: sans-serif;
   font-size: 18px;
 }
 
-.pagination a{
+.pagination a {
   text-decoration: none;
-  color: white
+  color: white;
 }
 
-.pagination .active{
+.pagination .active {
   background-color: #e50914;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .banner {
+    width: 100%;
+    height: 500px;
+  }
+  .banner::before {
+    height: 500px;
+    content: "";
+    background: linear-gradient(to top, black, transparent);
+  }
+  .banner-info{
+   width: 95%;
+   margin-left: 0;
+  }
+  .banner-info h1{
+    margin-left: 60px;
+  }
+  .MovieDetail-img{
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+  .movie-count ul li span{
+    font-size: 16px;    
+  }
+  .review-button button {
+    margin-right: 10px;
+  }
+  .movie-card-info ul li{
+   font-size: 0.5rem;
+  }
+}
+@media screen and (max-width : 768px) {
+  .home h1 {
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width : 450px) {
+
+  .review-button button {
+    width: 160px;
+    height: 50px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    background-color: #e50914;
+    color: white;
+  }
 }
