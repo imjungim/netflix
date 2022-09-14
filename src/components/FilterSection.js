@@ -7,7 +7,7 @@ import FilterGenres from "./FilterGenres";
 
 const FilterSection = () => {
   const [close, setClose] = useState(false);
- 
+
   return (
     <div className={close ? "sort-section-closed" : "sort-section"}>
       <div className="sort-section_1">

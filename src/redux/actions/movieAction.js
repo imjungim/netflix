@@ -3,7 +3,6 @@ import api from "../api";
 //api키값 .env 환경변수 설정
 const API_KEY = process.env.REACT_APP_API_KEY;
 function getMovies(page, searchKeyword, filterTitle) {
-
   return async (dispatch) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
@@ -25,12 +24,11 @@ function getMovies(page, searchKeyword, filterTitle) {
       const searchApi = api.get(
         `/search/movie?api_key=${API_KEY}&language=en-US&query=${searchKeyword}&page=${page}&include_adult=false`
       );
-     
+
       const sortMovieApi = api.get(
         `/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=${filterTitle}&include_adult=true&include_video=false&page=${page}`
       );
-     
-     
+
       let [
         popularMovies,
         topRatedMovies,
@@ -46,7 +44,6 @@ function getMovies(page, searchKeyword, filterTitle) {
         searchApi,
         sortMovieApi,
       ]);
-   
 
       dispatch({
         type: "GET_MOVIES_SUCCESS",
@@ -55,7 +52,7 @@ function getMovies(page, searchKeyword, filterTitle) {
           topRatedMovies: topRatedMovies.data,
           upcomingMovies: upcomingMovies.data,
           genreList: genreList.data.genres,
-          searchMovies : searchMovies.data,
+          searchMovies: searchMovies.data,
           sortMovies: sortMovies.data,
         },
       });
@@ -65,11 +62,12 @@ function getMovies(page, searchKeyword, filterTitle) {
     }
   };
 }
-
+//디테일페이지
 function getMovieDetail(id) {
   return async (dispatch) => {
     try {
       dispatch({ type: "GET_MOVIES_REQUEST" });
+
       const getMovieDetailApi = api.get(
         `/movie/${id}?api_key=${API_KEY}&language=en-US`
       );
@@ -81,24 +79,20 @@ function getMovieDetail(id) {
       );
       const getMovieVideoApi = api.get(
         `/movie/${id}/videos?api_key=${API_KEY}&language=en-US`
-      );console.log("ID???",id)
+      );
 
-      let [
-        getMovieDetail,
-        getMovieReview,
-        getMovieRecommendation,
-        getMovieVideo,
-      ] = await Promise.all([
-        getMovieDetailApi,
-        getMovieReviewApi,
-        getMovieRecommendationApi,
-        getMovieVideoApi,
-      ]);
+      let [getDetail, getMovieReview, getMovieRecommendation, getMovieVideo] =
+        await Promise.all([
+          getMovieDetailApi,
+          getMovieReviewApi,
+          getMovieRecommendationApi,
+          getMovieVideoApi,
+        ]);
 
       dispatch({
         type: "GET_MOVIES_DETAIL",
         payload: {
-          getMovieDetail: getMovieDetail.data,
+          getDetail: getDetail.data,
           getMovieReview: getMovieReview.data,
           getMovieRecommendation: getMovieRecommendation.data,
           getMovieVideo: getMovieVideo.data,
@@ -113,7 +107,6 @@ function getMovieDetail(id) {
 function getFiltering(maxValue, minValue, genreTitle) {
   return async (dispatch) => {
     try {
-      
       dispatch({
         type: "GET_FILTERING",
         payload: { maxValue, minValue, genreTitle },

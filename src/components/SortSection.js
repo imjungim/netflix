@@ -6,32 +6,24 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { movieAction } from "../redux/actions/movieAction";
 
-
 const SortSection = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [close, setClose] = useState(false);
-  const [filterTitle, setFilterTitle] = useState('popularity.desc');
-  const { sortMovies,popularMovies } = useSelector(
-    (state) => state.movie
-  );
-    
+  const [filterTitle, setFilterTitle] = useState("popularity.desc");
+  const { sortMovies, popularMovies } = useSelector((state) => state.movie);
 
-    useEffect(()=>{
-      dispatch(movieAction.getMovies(filterTitle))
-    },[filterTitle]);
-
-    //console.log("filterTitle나와라",filterTitle)
+  useEffect(() => {
+    dispatch(movieAction.getMovies(filterTitle));
+  }, [filterTitle]);
 
   //sort select
   const handleChange = (eventKey) => {
     setFilterTitle(eventKey);
-    navigate('/movies')
-  }
+    navigate("/movies");
+  };
 
-  return (
-   <div></div>
-  );
+  return <div></div>;
 };
 
 export default SortSection;

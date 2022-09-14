@@ -1,8 +1,6 @@
 import React from "react";
 
-
-const MovieDetailBanner = ({getMovieDetail}) => {
- // console.log("title",selectedMovie)
+const MovieDetailBanner = ({ getDetail }) => {
   return (
     <div
       className="MovieDetailBanner"
@@ -16,8 +14,7 @@ const MovieDetailBanner = ({getMovieDetail}) => {
       <div className="movies-box">
         <h1>NETFLIX</h1>
         <div className="movies-box-title">
-          <h4>{getMovieDetail.title}</h4>
-          
+          <h4>{getDetail.title}</h4>
         </div>
       </div>
     </div>

@@ -32,9 +32,6 @@ const Movies = () => {
     minValue, maxValue, genreTitle } =
     useSelector((state) => state.movie);
 
-  console.log("SEARCH",searchMovies)
-  console.log("SORT",sortMovies)
-
   useEffect(() => {
     dispatch(movieAction.getMovies(page, searchKeyword, filterTitle));
   }, [page, filterTitle,searchKeyword]);

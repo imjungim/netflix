@@ -171,16 +171,15 @@ body {
 
 /* MovieDetail */
 
-.detail-area {
+/* .detail-area {
   width: 90%;
   margin: 0 auto;
-}
-.MovieDetail-img{
+} */
+.MovieDetail-img {
   margin-right: 30px;
 }
 .MovieDetail-img img {
   width: 100%;
-  
 }
 
 .detail-title h1 {
@@ -287,18 +286,13 @@ body {
   color: white;
 }
 
-
-
 /*review & related movie  */
-
-.review-related-area {
-  margin-top: 50px;
-}
 
 .review-button {
   display: flex;
   padding-left: 0;
   list-style: none;
+  margin-top: 50px;
 }
 
 .review-button button {
@@ -594,35 +588,34 @@ body {
     content: "";
     background: linear-gradient(to top, black, transparent);
   }
-  .banner-info{
-   width: 95%;
-   margin-left: 0;
+  .banner-info {
+    width: 95%;
+    margin-left: 0;
   }
-  .banner-info h1{
+  .banner-info h1 {
     margin-left: 60px;
   }
-  .MovieDetail-img{
+  .MovieDetail-img {
     margin-right: 0;
     margin-bottom: 30px;
   }
-  .movie-count ul li span{
-    font-size: 16px;    
+  .movie-count ul li span {
+    font-size: 16px;
   }
   .review-button button {
     margin-right: 10px;
   }
-  .movie-card-info ul li{
-   font-size: 0.5rem;
+  .movie-card-info ul li {
+    font-size: 0.5rem;
   }
 }
-@media screen and (max-width : 768px) {
+@media screen and (max-width: 768px) {
   .home h1 {
     margin-left: 50px;
   }
 }
 
-@media screen and (max-width : 450px) {
-
+@media screen and (max-width: 450px) {
   .review-button button {
     width: 160px;
     height: 50px;

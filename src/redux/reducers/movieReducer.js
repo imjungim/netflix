@@ -6,7 +6,7 @@ let initialState = {
   sortMovies: {},
   loading: true,
   genreList: [],
-  getMovieDetail: {},
+  getDetail: {},
   getMovieReview: {},
   getMovieRecommendation: {},
   getMovieVideo: {},
@@ -37,12 +37,11 @@ function movieReducer(state = initialState, action) {
     case "GET_MOVIES_DETAIL":
       return {
         ...state,
-        loading: false,
-        getMovieDetail: payload.getMovieDetail,
+        getDetail: payload.getDetail,
         getMovieReview: payload.getMovieReview,
         getMovieRecommendation: payload.getMovieRecommendation,
         getMovieVideo: payload.getMovieVideo,
-        
+        loading: false,
       };
     case "GET_FILTERING":
       return {

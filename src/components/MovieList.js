@@ -14,18 +14,17 @@ const MovieList = ({
   genreTitle,
   searchKeyword,
   page,
-  setPage
+  setPage,
 }) => {
-
-let movies = [];
+  let movies = [];
 
   //pagination
   const handlePageChange = (page) => {
     setPage(page);
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
   };
 
-// 년도
+  // 년도
   const yearFilter = sortMovies.results
     .slice()
     .filter(
@@ -33,7 +32,7 @@ let movies = [];
         minValue <= moment(element.release_date).format("YYYY") &&
         maxValue >= moment(element.release_date).format("YYYY")
     );
-    
+
   //장르
   const genreFilter = genreList?.find((item) => item.name === genreTitle)?.id;
   const genres = sortMovies.results
@@ -41,29 +40,28 @@ let movies = [];
     .filter((element) => element.genre_ids.includes(genreFilter));
 
   //연도 && 장르
-  const filterAll = yearFilter
-    ?.slice()
-    .filter((it) => genres?.includes(it));
+  const filterAll = yearFilter?.slice().filter((it) => genres?.includes(it));
   console.log("All", filterAll);
 
-// //  검색
-if(searchMovies.results !== null || searchKeyword !== null){
-  movies=searchMovies.results
-  console.log("검색",movies)
-}
-//movies메인
-if(searchMovies.results[0]?.title == "UNdefined" ||
-(sortMovies.results !== null && searchKeyword == null)
-){
-  movies=sortMovies.results;
-}
-//년도
-if(minValue >=1990 && maxValue <= 2022){
-  movies = yearFilter
-}
-if(genreFilter){
-  movies=genres
-}
+  // //  검색
+  if (searchMovies.results !== null || searchKeyword !== null) {
+    movies = searchMovies.results;
+    console.log("검색", movies);
+  }
+  //movies메인
+  if (
+    searchMovies.results[0]?.title == "UNdefined" ||
+    (sortMovies.results !== null && searchKeyword == null)
+  ) {
+    movies = sortMovies.results;
+  }
+  //년도
+  if (minValue >= 1990 && maxValue <= 2022) {
+    movies = yearFilter;
+  }
+  if (genreFilter) {
+    movies = genres;
+  }
   return (
     <div>
       <Row>
@@ -76,17 +74,16 @@ if(genreFilter){
         })}
       </Row>
       <div className="pagination-area">
-          <Pagination
-            activePage={page}
-            itemsCountPerPage={10}
-            totalItemsCount={1000}
-            pageRangeDisplayed={5}
-            onChange={handlePageChange}
-          />
-        </div>
+        <Pagination
+          activePage={page}
+          itemsCountPerPage={10}
+          totalItemsCount={1000}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 };
 
 export default MovieList;
-

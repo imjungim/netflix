@@ -1,15 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers, faStar, faVideo } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 
 const SingleCard = ({ item }) => {
-  // console.log("searchMovies",searchMovies)
+  console.log("item", item);
   const navigate = useNavigate();
   const { genreList } = useSelector((state) => state.movie);
+
   const showDetail = () => {
     navigate(`/movies/${item.id}`);
   };
@@ -36,9 +37,7 @@ const SingleCard = ({ item }) => {
             <h4>{item.title}</h4>
           </div>
           <div className="release-date">
-            <p>
-            {moment(item.release_date).format("YYYY")}
-            </p>
+            <p>{moment(item.release_date).format("YYYY")}</p>
           </div>
           <div>
             {item.genre_ids.map((id) => (

@@ -5,7 +5,6 @@ const api = axios.create({
   headers : {"Content-type" : "application/json"} //데이터타입
 })
 
-//interceptor 선택적인부분.
 api.interceptors.request.use(function (config) {
   // Do something before request is sent
   console.log("request start", config)

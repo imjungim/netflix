@@ -1,7 +1,6 @@
 import React from "react";
 
 const Banner = ({ movie }) => {
-
   return (
     <div
       className="banner"
@@ -9,7 +8,8 @@ const Banner = ({ movie }) => {
         backgroundImage:
           "url(" +
           `https://image.tmdb.org/t/p/original//${movie.backdrop_path}` +
-          ")", backgroundPosition : 'center'
+          ")",
+        backgroundPosition: "center",
       }}
     >
       <div className="banner-info">
@@ -23,4 +23,3 @@ const Banner = ({ movie }) => {
 export default Banner;
 
 //url부분은 string으로 처리!!
-//

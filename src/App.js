@@ -1,10 +1,10 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import Movies from './pages/Movies';
-import MovieDetail from './pages/MovieDetail';
-import Navigation from './components/Navigation';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
+import MovieDetail from "./pages/MovieDetail";
+import Navigation from "./components/Navigation";
 
 //3개 페이지 홈,무비,영화상세페이지
 //2. 홈페이지에서 배너를 볼 수 있다.
@@ -14,7 +14,7 @@ import Navigation from './components/Navigation';
 
 //6. 영화디테일 페이지에서 영화에 대한 디테일 정보를 볼 수있다.(포스터,제목,줄거리,점수,인기도등)
 //7. trailer를 누르면 예고편을 볼 수있다.
-//8. 영화의 리뷰도 볼 수 있따.
+//8. 영화의 리뷰도 볼 수 있다.
 //9. 관련된 영화(related movie)도 볼 수있다.
 //10. 영화 검색을 할 수 있다.
 //11. 영화 정렬 , 필터링 할 수있다.
@@ -22,11 +22,11 @@ import Navigation from './components/Navigation';
 function App() {
   return (
     <div>
-      <Navigation/>
+      <Navigation />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/movies" element={<Movies/>}/>
-        <Route path="/movies/:id" element={<MovieDetail/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:id" element={<MovieDetail />} />
       </Routes>
     </div>
   );

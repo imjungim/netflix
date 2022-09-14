@@ -8,13 +8,10 @@ const FilterGenres = () => {
   const dispatch = useDispatch();
   const [genreTitle, setGenreTitle] = useState("");
   const { genreList } = useSelector((state) => state.movie);
-  //console.log("check",genreList)
 
- // console.log("genreTitle", genreTitle);
-
-  useEffect(()=>{
-    dispatch(movieAction.getFiltering(undefined,undefined,genreTitle))
-  },[genreTitle])
+  useEffect(() => {
+    dispatch(movieAction.getFiltering(undefined, undefined, genreTitle));
+  }, [genreTitle]);
 
   return (
     <div className="filter-genre">

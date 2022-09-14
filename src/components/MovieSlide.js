@@ -4,7 +4,6 @@ import "react-multi-carousel/lib/styles.css";
 import MovieCard from "./MovieCard";
 
 const MovieSlide = ({ movies }) => {
-
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -27,8 +26,10 @@ const MovieSlide = ({ movies }) => {
 
   return (
     <div className="movieSlide">
-      <Carousel responsive={responsive} >
-        {movies.results.map((item)=><MovieCard item={item} key={item.id}/>)}
+      <Carousel responsive={responsive}>
+        {movies.results?.map((item) => (
+          <MovieCard item={item} key={item.id} />
+        ))}
       </Carousel>
     </div>
   );
