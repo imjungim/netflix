@@ -15,14 +15,16 @@ body {
   text-decoration: none;
   margin-right: 20px;
   font-weight: 300;
-  font-family: Montserrat;
+
 }
 
 .home h1 {
   font-size: 32px;
-  font-weight: 200;
+  font-weight: 500;
+  font-family: helvetica;
   margin-left: 130px;
   margin-bottom: 10px;
+
 }
 
 .loading {
@@ -624,5 +626,8 @@ body {
     font-weight: 700;
     background-color: #e50914;
     color: white;
+  }
+  .banner{
+    margin-bottom: 100px;
   }
 }
