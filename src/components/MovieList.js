@@ -41,12 +41,11 @@ const MovieList = ({
 
   //연도 && 장르
   const filterAll = yearFilter?.slice().filter((it) => genres?.includes(it));
-  console.log("All", filterAll);
+  
 
   // //  검색
   if (searchMovies.results !== null || searchKeyword !== null) {
     movies = searchMovies.results;
-    console.log("검색", movies);
   }
   //movies메인
   if (
@@ -67,7 +66,8 @@ const MovieList = ({
       <Row>
         {movies.map((item) => {
           return (
-            <Col lg={6}>
+            <Col lg={6}  
+            >
               <SingleCard item={item} key={item.id} />
             </Col>
           );

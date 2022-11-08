@@ -52,9 +52,9 @@ const Movies = () => {
   }
   return (
     <div className="Movies">
-      <Container>
-        <Row>
-          <Col lg={4}>
+      <Container className="container">
+        <Row className="row">
+          <Col lg={4} className="col">
             <div>
               <div className={close ? "sort-section-closed" : "sort-section"}>
                 <div className="sort-section_1">

@@ -12,8 +12,6 @@ import MovieDetailBanner from "../components/MovieDetailBanner";
 import Review from "../components/Review";
 import MovieCard from "../components/MovieCard";
 
-
-
 //getMovieDetail redux action 만들기
 //useParams로 id값 넘겨주기
 //useSelect movie데이터 가져오기
@@ -34,11 +32,8 @@ const MovieDetail = () => {
   } = useSelector((state) => state.movie);
 
   useEffect(() => {
-    console.log("Test useEffect");
     dispatch(movieAction.getMovieDetail(id));
   }, [id]);
-
-
 
   if (loading) {
     return (
@@ -68,110 +63,114 @@ const MovieDetail = () => {
               </ul>
             </div>
             <div className="detail-title">
-                <h1>{getDetail.title}</h1>
-                <h3>{getDetail.original_title}</h3>
-              </div>
-              <div className="movie-count">
-                <ul>
-                  <li>
-                    <FontAwesomeIcon
-                      icon={faStar}
-                      style={{ color: "yellow" }}
-                      className="star"
-                    />
-                    <span>{getDetail.vote_average}</span>
-                  </li>
-                  <li>
-                    <FontAwesomeIcon icon={faUsers} className="users" />
-                    <span>{getDetail.popularity}</span>
-                  </li>
-                  <li>
-                    <span className="movie-adultInfo">
-                      {getDetail.adult ? "청불" : "Under 18"}
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div className="movie-overview">
-                <p>{getDetail.overview}</p>
-              </div>
-              <div className="movie-info">
-                <ul>
-                  <li>
-                    <span>Budget</span>${getDetail.budget}
-                  </li>
-                  <li>
-                    <span>Revenue</span>${getDetail.revenue}
-                  </li>
-                  <li>
-                    <span>Release Day</span>
-                    {getDetail.release_date}
-                  </li>
-                  <li>
-                    <span>Time</span>
-                    {getDetail.runtime}
-                  </li>
-                </ul>
-              </div>
-              <div className="watch-button">
-                <FontAwesomeIcon icon={faVideo} />
-                <button onClick={() => setShow(true)}>Watch Trailer</button>
-                {/* Watch Trailer Modal */}
-                <Modal
-                  show={show}
-                  fullscreen={fullscreen}
-                  onHide={() => setShow(false)}
-                  dialogClassName="modal-90w"
-                >
-                  <Modal.Header closeButton dialogClassName="modal">
-                    <Modal.Title>Modal</Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <YouTube
-                      //videoId : https://www.youtube.com/watch?v={videoId} 유튜브 링크의 끝부분에 있는 고유한 아이디
-                      videoId={getMovieVideo.results? getMovieVideo.results[0].key : "null"}
-                      opts={{
-                        width: "100%",
-                        height: "600px",
-                        playerVars: {
-                          autoplay: 0, //자동재생 O
-                          rel: 0, //관련 동영상 표시하지 않음
-                          modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
-                        },
-                      }}
-                    />
-                  </Modal.Body>
-                </Modal>
-              </div>
+              <h1>{getDetail.title}</h1>
+              <h3>{getDetail.original_title}</h3>
+            </div>
+            <div className="movie-count">
+              <ul>
+                <li>
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    style={{ color: "yellow" }}
+                    className="star"
+                  />
+                  <span>{getDetail.vote_average}</span>
+                </li>
+                <li>
+                  <FontAwesomeIcon icon={faUsers} className="users" />
+                  <span>{getDetail.popularity}</span>
+                </li>
+                <li>
+                  <span className="movie-adultInfo">
+                    {getDetail.adult ? "청불" : "Under 18"}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div className="movie-overview">
+              <p>{getDetail.overview}</p>
+            </div>
+            <div className="movie-info">
+              <ul>
+                <li>
+                  <span>Budget</span>${getDetail.budget}
+                </li>
+                <li>
+                  <span>Revenue</span>${getDetail.revenue}
+                </li>
+                <li>
+                  <span>Release Day</span>
+                  {getDetail.release_date}
+                </li>
+                <li>
+                  <span>Time</span>
+                  {getDetail.runtime}
+                </li>
+              </ul>
+            </div>
+            <div className="watch-button">
+              <FontAwesomeIcon icon={faVideo} />
+              <button onClick={() => setShow(true)}>Watch Trailer</button>
+              {/* Watch Trailer Modal */}
+              <Modal
+                show={show}
+                fullscreen={fullscreen}
+                onHide={() => setShow(false)}
+                dialogClassName="modal-90w"
+              >
+                <Modal.Header closeButton dialogClassName="modal">
+                  <Modal.Title>Modal</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <YouTube
+                    //videoId : https://www.youtube.com/watch?v={videoId} 유튜브 링크의 끝부분에 있는 고유한 아이디
+                    videoId={
+                      getMovieVideo.results
+                        ? getMovieVideo.results[0].key
+                        : "null"
+                    }
+                    opts={{
+                      width: "100%",
+                      height: "600px",
+                      playerVars: {
+                        autoplay: 0, //자동재생 O
+                        rel: 0, //관련 동영상 표시하지 않음
+                        modestbranding: 1, // 컨트롤 바에 youtube 로고를 표시하지 않음
+                      },
+                    }}
+                  />
+                </Modal.Body>
+              </Modal>
+            </div>
           </Col>
         </Row>
         <Row>
-            <Col sm={12} xl={12} lg={12}>
-              <ul className="review-button">
-                <li>
-                  <button onClick={() => setReviewActive(true)}>
-                    REVIEW ({getMovieReview.results?.length})
-                  </button>
-                </li>
-                <li>
-                  <button onClick={() => setReviewActive(false)}>
-                    RELATED MOVIES ({getMovieRecommendation.results?.length})
-                  </button>
-                </li>
-              </ul>
-              <div
-                className={reviewActive ? "review-content" : "related-content"}
-              >
-                {reviewActive ? (
-                  <Review review={getMovieReview} />
-                ) : (
-                  getMovieRecommendation.results?.map((item) => (
-                    <MovieCard item={item} />
-                  ))
-                )}
-              </div>
-            </Col>
-          </Row>
+          <Col sm={12} xl={12} lg={12}>
+            <ul className="review-button">
+              <li>
+                <button onClick={() => setReviewActive(true)}>
+                  REVIEW ({getMovieReview.results?.length})
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setReviewActive(false)}>
+                  RELATED MOVIES ({getMovieRecommendation.results?.length})
+                </button>
+              </li>
+            </ul>
+            <div
+              className={reviewActive ? "review-content" : "related-content"}
+            >
+              {reviewActive ? (
+                <Review review={getMovieReview} />
+              ) : (
+                getMovieRecommendation.results?.map((item) => (
+                  <MovieCard item={item} />
+                ))
+              )}
+            </div>
+          </Col>
+        </Row>
       </Container>
     </div>
   );

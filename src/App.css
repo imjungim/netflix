@@ -18,13 +18,11 @@ body {
 
 }
 
-.home h1 {
+.home .home-title {
   font-size: 32px;
   font-weight: 500;
   font-family: helvetica;
-  margin-left: 130px;
-  margin-bottom: 10px;
-
+  margin-left: 160px;
 }
 
 .loading {
@@ -611,9 +609,17 @@ body {
     font-size: 0.5rem;
   }
 }
+
 @media screen and (max-width: 768px) {
-  .home h1 {
-    margin-left: 50px;
+  .home .home-title {
+    margin-left: 40px;
+  }
+  .watch-button button {
+    border: none;
+  }
+  .review-button{
+   display: flex;
+   justify-content: center;
   }
 }
 

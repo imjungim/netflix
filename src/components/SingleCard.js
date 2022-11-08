@@ -7,7 +7,7 @@ import { faUsers, faStar, faVideo } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
 
 const SingleCard = ({ item }) => {
-  console.log("item", item);
+
   const navigate = useNavigate();
   const { genreList } = useSelector((state) => state.movie);
 
