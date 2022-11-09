@@ -624,6 +624,25 @@ body {
 }
 
 @media screen and (max-width: 450px) {
+  .banner{
+    margin-bottom: 100px;
+  }
+  .banner-info .banner-title {
+    text-align: center;
+  }
+
+  .banner-info .banner-overview {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  .home .home-title {
+    margin-left:0 ;
+    text-align: center;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
   .review-button button {
     width: 160px;
     height: 50px;
@@ -633,7 +652,5 @@ body {
     background-color: #e50914;
     color: white;
   }
-  .banner{
-    margin-bottom: 100px;
-  }
+
 }

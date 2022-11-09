@@ -13,8 +13,8 @@ const Banner = ({ movie }) => {
       }}
     >
       <div className="banner-info">
-        <h1>{movie.title}</h1>
-        <p>{movie.overview}</p>
+        <h1 className="banner-title">{movie.title}</h1>
+        <p className="banner-overview">{movie.overview}</p>
       </div>
     </div>
   );
