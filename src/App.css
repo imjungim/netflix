@@ -276,6 +276,7 @@ body {
   background-color: black;
   font-size: 1.5rem;
   font-weight: 700;
+  white-space: nowrap; 
 }
 
 .watch-button button:hover {
