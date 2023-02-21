@@ -22,7 +22,7 @@ body {
   font-size: 32px;
   font-weight: 500;
   font-family: helvetica;
-  margin-left: 160px;
+  padding-left: 135px;
 }
 
 .loading {
@@ -81,6 +81,7 @@ body {
   margin: 20px auto;
   background-repeat: no-repeat;
   background-size: cover;
+
 }
 
 .badge {
@@ -612,7 +613,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .home .home-title {
-    margin-left: 40px;
+    padding-left: 0;
   }
   .watch-button button {
     border: none;
@@ -634,6 +635,10 @@ body {
   .banner-info .banner-overview {
     word-break: keep-all;
     overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
   }
 
   .home .home-title {
@@ -653,4 +658,9 @@ body {
     color: white;
   }
 
+}
+
+.row{
+  display: flex;
+  justify-content: center;
 }
