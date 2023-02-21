@@ -22,7 +22,7 @@ function getMovies(page, searchKeyword, filterTitle) {
       );
 
       const searchApi = api.get(
-        `/search/movie?api_key=${API_KEY}&language=en-US&query=${searchKeyword}&page=${page}&include_adult=false`
+        `/search/movie?api_key=${API_KEY}&language=en-US&query=${searchKeyword}&page=1000&include_adult=false`
       );
 
       const sortMovieApi = api.get(
