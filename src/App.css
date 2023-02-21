@@ -172,10 +172,6 @@ body {
 
 /* MovieDetail */
 
-/* .detail-area {
-  width: 90%;
-  margin: 0 auto;
-} */
 .MovieDetail-img {
   margin-right: 30px;
 }
@@ -281,6 +277,7 @@ body {
   background-color: black;
   font-size: 1.5rem;
   font-weight: 700;
+  white-space: nowrap; 
 }
 
 .watch-button button:hover {
