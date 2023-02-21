@@ -8,10 +8,10 @@ import ClipLoader from "react-spinners/ClipLoader";
 const Home = () => {
   const dispatch = useDispatch();
   const {popularMovies, topRatedMovies, upcomingMovies, loading} = useSelector(state=>state.movie)
- // console.log("home",upcomingMovies)
 
   useEffect(()=>{
     dispatch(movieAction.getMovies());
+
   },[])
 //loading->true 스피너를 보여주고 : 데이터 도착 전
 //loading -> false 면 데이터를 보여준다 : 데이터 도착후 또는 에러가 났을때
